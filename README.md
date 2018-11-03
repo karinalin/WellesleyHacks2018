@@ -1,1 +1,0 @@
-# WellesleyHacks2018
