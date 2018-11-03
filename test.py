@@ -1,28 +1,34 @@
 import io 
 import os
-from google.cloud import vision 
+from google.cloud import vision
+from google.cloud.vision import enums
 from google.cloud.vision import types
+
+def detect
+
+features = [
+	types.Feature(type=enums.Feature.Type.LABEL_DETECTION),
+    types.Feature(type=enums.Feature.Type.TEXT_DETECTION),
+    types.Feature(type=enums.Feature.Type.WEB_DETECTION),
+    types.Feature(type=enums.Feature.Type.SAFE_SEARCH_DETECTION),
+]
 
 client = vision.ImageAnnotatorClient()
 
-file_name = os.path.join( 
-  os.path.dirname(__file__), 
-  '/Users/joycezhao/Desktop/not_cat.jpg') 
+requests = []
+for filename in ['trump.jpeg', 'not_cat.jpg', 'cat.jpeg']:
+    with open(filename, 'rb') as image_file:
+        image = types.Image(
+            content=image_file.read())
+    request = types.AnnotateImageRequest(
+        image=image, features=features)
+    requests.append(request)
 
-with io.open(file_name, 'rb') as image_file: 
-  content = image_file.read() 
-  
-image = types.Image(content=content) 
+response = client.batch_annotate_images(requests)
 
-response = client.label_detection(image=image) 
-labels = response.label_annotations 
-
-for label in labels: 
-  if "cat" not in label.description: 
-    output = 'no' 
-  else: 
-    output = 'yes' 
-  break
-
-print (output)
-print(response)
+for annotation_response in response.responses:
+	webDetect = annotation_response.web_detection
+	entities = webDetect.web_entities
+	for entity in entities:
+		if 'Trump' in entity.description:
+			print 'Trump found'
