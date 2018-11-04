@@ -11,6 +11,10 @@
     "start": "node webpack.config.js",
     "postinstall": "npm run build"
   },
+  "engines":{
+    "node": "6.11.3",
+    "npm": "3.10.10"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
