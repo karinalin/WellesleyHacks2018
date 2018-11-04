@@ -1,10 +1,14 @@
 body {
   background-color: lightblue;
   font-family: "Lato";
+  text-align: center;
 }
 
 #logo {
   text-align: center;
   width: 40%;
-  /* height: 50%; */
+}
+
+#haiku-section {
+	text-align: center;
 }

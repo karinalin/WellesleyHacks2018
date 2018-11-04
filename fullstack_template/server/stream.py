@@ -21,7 +21,8 @@ def write_haiku(image_file):
     line1 = ''
     line2 = '' 
     line3 = ''
-    links = []
+    
+    haiku = []
     count = 10
 
     for tweet in iterator:
@@ -44,14 +45,9 @@ def write_haiku(image_file):
     if line3 == '':
         print 'machine is sorry \nfailed to find relevant tweets \nto create poem'
     else:
-        haiku = 'An Ode to ' + keyword + '\n1: ' + line1 + '\n' + '2: ' + line2 + '\n' + '3: ' + line3
-        print haiku 
+        haiku.append('An Ode to ' + keyword)
+        haiku.append(line1)
+        haiku.append(line2)
+        haiku.append(line3)
 
-def main():
-    # print command line arguments
-    for arg in sys.argv[1:]:
-        print arg
-
-if __name__ == '__main__':
-    image = 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350'
-    write_haiku(image)
+        return haiku
