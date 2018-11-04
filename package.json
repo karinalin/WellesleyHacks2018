@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node static/js/index.js",
-    "heroku-postbuild": "cd static && npm install && npm run build:production"
+    "start": "node static/js/index.js"
   },
   "engines":{
     "node": "6.11.3",
