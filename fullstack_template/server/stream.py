@@ -47,7 +47,11 @@ def write_haiku(image_file):
         haiku = 'An Ode to ' + keyword + '\n1: ' + line1 + '\n' + '2: ' + line2 + '\n' + '3: ' + line3
         print haiku 
 
-if __name__ == '__main__':
-    image = '/Users/joycezhao/Desktop/WellesleyHacks2018/fullstack_template/server/img/cat.jpeg'
-    write_haiku(image)
+def main():
+    # print command line arguments
+    for arg in sys.argv[1:]:
+        print arg
 
+if __name__ == '__main__':
+    image = 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350'
+    write_haiku(image)

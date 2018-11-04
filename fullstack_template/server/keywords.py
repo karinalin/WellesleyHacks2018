@@ -9,6 +9,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Whack-eb9c97f19641.json"
 client = vision.ImageAnnotatorClient()
 
 def get_keyword(file_path):
+	"""
 	file_name = os.path.join( 
 		os.path.dirname(__file__), 
 		file_path) 
@@ -17,10 +18,13 @@ def get_keyword(file_path):
 		content = image_file.read() 
 
 	image = types.Image(content=content) 
+	"""
+
+	image = vision.types.Image()
+	image.source.image_uri = file_path
 
 	response = client.label_detection(image=image) 
 	labels = response.label_annotations 
 
 	keyword = labels[0].description.split(' ')[0]
-	print keyword
 	return keyword
