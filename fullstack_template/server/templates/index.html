@@ -3,34 +3,61 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- Latest compiled and minified bootstrap CSS -->
-    <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='bootstrap.min.css') }}">
-    <link rel="stylesheet" type = "text/css" href = "{{url_for('static',filename='styles/main.css')}}">
-    <link rel="stylesheet" href = "https://fonts.googleapis.com/css?family=Lato">
-    <title>Creating a Full-Stack Python Application with NPM, React.js and Webpack</title>
+    <title>#haiku</title>
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='styles/images/icons/hashtag.ico')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/vendor/animate/animate.css')}}">
+    <link rel="stylesheet" type = "text/css" href="{{url_for('static',filename='styles/css/main.css')}}">
   </head>
+
   <body>
-    <div id = "wrapper">
-      <div id = "header">
-        <img id = "logo" src="{{url_for('static',filename='img/haiku.png')}}" alt = "haiku logo" class = "center">
-        <h2 id = "description">Welcome to #haiku! Input an image URL to generate a haiku based on recent tweets containing the word.</h2>
-      </div>
-      <!-- <div id = "imgUploader">
-        <input type="file" />
-        <img id="target" height={200} />
-      </div> -->
-      <form method = POST action = "/addURL/">
-        <div class="form-group">
-          <input type="text" class="form-control" name="keyword" placeholder="Enter image URL here">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      <div> 
-        <img src={{url}}>
-      </div>
-      <div id = "haiku-section">
-        {% for line in haiku_lines %}
-          <h4 id = "haiku-here">{{line}}</h4>
-        {% endfor %} 
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        <form class="contact100-form validate-form" method=POST action="/addURL/">
+          <span class="contact100-form-title">
+            <img id="logo" src="{{url_for('static',filename='img/haiku.png')}}" alt="haiku logo" class="center" style="width:100%; padding-left:40px">
+            <br>
+            <br>
+            <p id="description" style="font-size:15px; font-weight: bold;"> Enter an image URL to generate a haiku composed of recent tweets about the picture!</p>
+          </span>
+
+          <div class="wrap-input100 validate-input" data-validate="Name is required">
+            <span class="label-input100">Image URL</span>
+            <input class="input100" type="text" name="keyword" placeholder="Enter URL here">
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+              <div class="contact100-form-bgbtn"></div>
+              <button class="contact100-form-btn">
+                <span>
+                  Submit
+                  <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+
+        <div class="haiku">
+          {% if haiku_lines %}
+          <div> 
+            <br>
+            <br>
+            <img src={{url}} style="width:100%">
+          </div>
+        {% endif %}
+        <div id="haiku-section">
+          {% for line in haiku_lines %}
+            {% if loop.first %}
+              <h3 id="haiku-here" style="font-weight: bold">{{line}}</h3>
+            {% else %}
+              <p id="haiku-here" style="margin: 0; padding: 0; line-height: 20px">{{line}}</p>
+            {% endif %}
+          {% endfor %} 
+        </div>
+        </div>
+        
       </div>
     </div>
     <script src="dist/bundle.js" type="text/javascript"></script>

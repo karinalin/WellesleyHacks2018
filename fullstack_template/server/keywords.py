@@ -25,6 +25,6 @@ def get_keyword(file_path):
 
 	response = client.label_detection(image=image) 
 	labels = response.label_annotations 
-
+	print labels[0].description
 	keyword = labels[0].description.split(' ')[0]
 	return keyword
