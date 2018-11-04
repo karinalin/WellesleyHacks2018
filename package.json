@@ -1,0 +1,13 @@
+{
+  "name": "hashtaghaiku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node static/js/index.js"
+  },
+  "engines":{
+    "node": "6.11.3",
+    "npm": "3.10.10"
+  }
+}
