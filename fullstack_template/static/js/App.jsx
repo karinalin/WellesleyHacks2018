@@ -1,13 +1,13 @@
 import React from 'react';
- 
+
 export default class App extends React.Component {
- 
+
     constructor(props) {
         super(props);
          this.state = { image: "" };
          this.previewFile = this.previewFile.bind(this);
     }
- 
+
     previewFile(event) {
     	if (event.target.files && event.target.files[0]) {
             let reader = new FileReader();
@@ -18,13 +18,18 @@ export default class App extends React.Component {
             reader.readAsDataURL(event.target.files[0]);
         }
     };
- 
+
     render() {
         return (
-            <div>
-            	<input type="file" onChange={this.previewFile} />
-            	<img id="target" src={this.state.image} height={200} />
-            </div>
+            // <div id = "wrapper">
+            //   <div id = "header">
+            //     <h1>words</h1>
+            //   </div>
+            //   <div id = "imgUploader">
+            //   	<input type="file" onChange={this.previewFile} />
+            //   	<img id="target" src={this.state.image} height={200} />
+            //   </div>
+            // </div>
         );
     }
 }

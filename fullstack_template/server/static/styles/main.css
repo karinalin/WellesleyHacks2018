@@ -1,0 +1,10 @@
+body {
+  background-color: lightblue;
+  font-family: "Lato";
+}
+
+#logo {
+  text-align: center;
+  width: 40%;
+  /* height: 50%; */
+}
